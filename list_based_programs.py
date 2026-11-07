@@ -201,3 +201,142 @@ def rotate_right(lst,k):
     return lst[-k:] + lst[:-k] if k else lst[:]
 
 print(rotate_right([1, 2, 3, 4, 5], 2))  # [4, 5, 1, 2, 3]
+
+
+"""
+## 14. sum of all numbers in a list.
+"""
+
+def sum_of_all_items(lst):
+    total = 0
+    for i in lst:
+        total +=i
+    return total
+print(sum_of_all_items([2,4,1,5]))
+print(sum_of_all_items([3,4]))
+print(sum_of_all_items([2,4,3,1]))
+
+
+"""
+## 15. remove duplicates from a list without using set() methods or list methods
+
+"""
+
+def remove_duplicates_in_list(lst):
+
+    l = []
+    for i in lst:
+      if i not in l:
+        l.append(i)
+
+    return l
+
+print(remove_duplicates_in_list([2,1,2,3,1,4,5,4,6,5,7,0]))
+print(remove_duplicates_in_list(2,2,3,3,1,1))
+
+"""
+## 16 . frequency of elements in a list.
+
+"""
+
+def frequency_of_list_items(lst):
+    freq = {}
+    for i in lst:
+      if i not in freq:
+        freq[i] =1
+      else:
+        freq[i] += 1
+    return freq
+
+print(frequency_of_list_items([1,2,1,2,3,4,5,6]))
+
+"""
+## 17. merge the two lists.
+"""
+
+def merge_two_list(a,b):
+    return a + b
+
+print(merge_two_list([1,2],[3,4]))
+print(merge_two_list([0,1],[10,4]))
+
+"""
+## 18. Find pairs whose sum equals a target
+"""
+
+def find_targets_equals_to_target(lst,target):
+
+    for i in range(len(lst)):
+        for j in range(i+1,len(lst)):
+            if lst[i] + lst [j] == target:
+                print(lst[i] , lst[j])
+
+a = [2, 4, 3, 5, 7, 8]
+target = 10
+
+find_targets_equals_to_target(a,target)
+print(" ")
+find_targets_equals_to_target([4,2,1,4,3,5,6,7],8)
+
+"""
+## 19. find the maximum difference between two elements in a list such that larger element appears after the smaller number.
+"""
+
+def max_diff_between_two_elem(lst):
+
+    min_value = lst[0]
+    max_diff = 0
+    
+    for i in lst[1:]:
+        max_diff = max(max_diff, i - min_value)
+        min_value = min(min_value, i)
+    return max_diff
+
+print(max_diff_between_two_elem([2, 3, 10, 6, 4, 8, 1]))
+
+"""
+20. find the largest consecutive number in a list
+"""
+
+
+def largest_consecutive_number(lst):
+    a = list(set(lst))
+    a.sort()
+    # print(a)
+    largest_freq = min(a)
+    for i in range(len(a)-1):
+      # print(a[i+1]- a[i])
+      if a[i+1] - a[i] == 1:
+        largest_freq = a[i+1]
+      else:
+        break
+    return largest_freq
+print(largest_consecutive_number([100,1,20,2,3,30]))
+print(largest_consecutive_number([0,3,2,1,10,7,8,4]))
+print(largest_consecutive_number([0,4,1,5]))
+# print(diff)
+
+"""
+21 . flatten a list of lists into a single list.
+"""
+
+def flatten_list(lst):
+    return [j for i in lst for j in i]
+
+print(flatten_list([[1, 2], [3, 4], [5, 6]]))
+
+"""
+22. find the subarrays based on targets.
+"""
+
+def subarray_list(lst,target):
+
+    for i in range(len(lst)):
+        for j in range(i+1,len(lst)):
+          sub = lst[i:j]
+          if sum(sub) == target:
+              print(sub)
+
+subarray_list([1, 2, 3, 4],5)
+print(" ")
+subarray_list([1, 2, 3, 4,3,1,9,3,5],7)
